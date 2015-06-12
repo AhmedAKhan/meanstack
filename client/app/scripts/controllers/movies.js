@@ -9,9 +9,9 @@
  */
 angular.module('clientApp')
   .controller('MoviesCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+    $scope.movies = [
+      {title:"test 1", url:"www.google.com"},
+      {title:"test 2", url:"www.youtube.com"},
+      {title:"test 3", url:"www.imdb.com"}
     ];
   });

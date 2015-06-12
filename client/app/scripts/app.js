@@ -13,6 +13,8 @@ angular
     'ngRoute'
   ])
   .config(function ($routeProvider) {
+    //RestangularProvider.setBaseURL('http://localhost:3000');
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
