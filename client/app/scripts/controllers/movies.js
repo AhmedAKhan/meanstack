@@ -9,8 +9,5 @@
  */
 angular.module('clientApp')
   .controller('MoviesCtrl', function ($scope, Movie) {
-    console.log('Movie.getList().$object:');
-    console.log(Movie.getList().$object);
-
     $scope.movies = Movie.getList().$object;
   });
