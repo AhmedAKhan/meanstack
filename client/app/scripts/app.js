@@ -10,10 +10,11 @@
  */
 angular
   .module('clientApp', [
-    'ngRoute'
+    'ngRoute',
+    'restangular'
   ])
-  .config(function ($routeProvider) {
-    //RestangularProvider.setBaseURL('http://localhost:3000');
+  .config(function ($routeProvider, RestangularProvider) {
+    RestangularProvider.setBaseUrl('http://localhost:3000');
 
     $routeProvider
       .when('/', {
@@ -28,7 +29,31 @@ angular
         templateUrl: 'views/movies.html',
         controller: 'MoviesCtrl'
       })
+      .when('/create/movie', {
+        templateUrl: 'views/movie-add.html',
+        controller: 'MovieAddCtrl'
+      })
+      .when('/movie/:id', {
+        templateUrl: 'views/movie-view.html',
+        controller: 'MovieViewCtrl'
+      })
+      .when('/movie-delete', {
+        templateUrl: 'views/movie-delete.html',
+        controller: 'MovieDeleteCtrl'
+      })
+      .when('/movie-edit', {
+        templateUrl: 'views/movie-edit.html',
+        controller: 'MovieEditCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .factory('MovieRestangular', function(Restangular){
+    return Restangular.withConfig(function(RestangularConfigurer){
+      RestangularConfigurer.setRestangularFields({id:'_id'});
+    });
+  })
+  .factory('Movie', function(MovieRestangular){
+    return MovieRestangular.service('movie');
   });
