@@ -37,13 +37,13 @@ angular
         templateUrl: 'views/movie-view.html',
         controller: 'MovieViewCtrl'
       })
-      .when('/movie-delete', {
-        templateUrl: 'views/movie-delete.html',
-        controller: 'MovieDeleteCtrl'
-      })
-      .when('/movie-edit', {
+      .when('/movie/:id/edit', {
         templateUrl: 'views/movie-edit.html',
         controller: 'MovieEditCtrl'
+      })
+      .when('/movie/:id/delete', {
+        templateUrl: 'views/movie-delete.html',
+        controller: 'MovieDeleteCtrl'
       })
       .otherwise({
         redirectTo: '/'
